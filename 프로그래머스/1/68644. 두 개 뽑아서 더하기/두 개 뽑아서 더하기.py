@@ -5,4 +5,5 @@ def solution(numbers):
             answer.append(numbers[i]+numbers[j])
     answer.sort()
     answer = list(dict.fromkeys(answer))
+    # dict.fromkeys(key, value) 
     return answer
