@@ -1,0 +1,3 @@
+-- 코드를 입력하세요
+-- INTAKE_CONDITION이 AGED,즉 늙은 것이 아닌 동물들을 조회하면 됨
+SELECT ANIMAL_ID,NAME FROM ANIMAL_INS WHERE INTAKE_CONDITION != 'Aged'
