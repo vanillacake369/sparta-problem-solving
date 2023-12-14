@@ -10,7 +10,7 @@ def solution(s):
             if (ss == '0'):
                 zeroCnt+=1
         zeroCntSum += zeroCnt
-        stmp = bin(len(stmp)-zeroCnt)[2:]
+        stmp = bin(len(stmp)-zeroCnt)[2:] # 6 -> 0x110 -> 110
     answer.append(loopCnt)
     answer.append(zeroCntSum)
     return answer
