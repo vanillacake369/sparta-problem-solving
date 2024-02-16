@@ -1,14 +1,12 @@
 def solution(participant, completion):
-    answer = ''
+    hashP = dict()
+    sum = 0
 
-    # 1. 두 list를 sorting한다
-    participant.sort()
-    completion.sort()
+    for p in participant:
+        hashP[hash(p)] = p
+        sum += hash(p)
 
-    # 2. completeion list의 len만큼 participant를 찾아서 없는 사람을 찾는다
-    for i in range(len(completion)):
-        if(participant[i] != completion[i]):
-            return participant[i]
+    for c in completion:
+        sum -= hash(c)
 
-    # 3. 전부 다 돌아도 없을 경우에는 마지막 주자가 완주하지 못한 선수이다.
-    return participant[len(participant)-1]
+    return hashP[sum]
