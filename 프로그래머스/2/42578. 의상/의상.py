@@ -1,15 +1,10 @@
-# https://school.programmers.co.kr/questions/33347
-# 수학 못 하면 서러워서 개발자 하겠냐,,,,ㅠㅠ
-
 def solution(clothes):
-    answer = 1
-    clothes_kind = {}
-    for cl in clothes:
-        if(cl[1] in clothes_kind):
-            clothes_kind[cl[1]] += 1
-        else:
-            clothes_kind[cl[1]] = 1
-    for k in clothes_kind:
-        answer *= (1+clothes_kind[k])
-    return answer - 1
+    outfits = {}
+    for item, category in clothes:
+        outfits[category] = outfits.get(category, 0) + 1
     
+    total_combinations = 1
+    for category in outfits:
+        total_combinations *= (outfits[category] + 1)  # 각 카테고리별 의상 수에 입지 않는 경우를 추가한 후 곱합니다.
+    
+    return total_combinations - 1  # 모든 의상을 입지 않는 경우를 제외합니다.
