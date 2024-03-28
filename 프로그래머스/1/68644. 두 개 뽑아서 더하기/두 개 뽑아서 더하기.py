@@ -1,9 +1,7 @@
 def solution(numbers):
-    answer = []
-    for i in range(0,len(numbers)):
-        for j in range(i+1,len(numbers)):
-            answer.append(numbers[i]+numbers[j])
-    answer.sort()
-    answer = list(dict.fromkeys(answer))
-    # dict.fromkeys(key, value) 
-    return answer
+    cases = set()
+    for i in range(0, len(numbers)):
+        for j in range(i + 1, len(numbers)):
+            cases.add(numbers[i] + numbers[j])
+
+    return sorted(list(cases))
