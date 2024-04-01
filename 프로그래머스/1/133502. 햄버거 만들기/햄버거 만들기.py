@@ -1,10 +1,9 @@
 def solution(ingredient):
-    answer = 0
-    stack = []
-    for i in ingredient:
-        stack.append(i)
-        if(stack[len(stack)-4:len(stack)]) == [1,2,3,1]:
-            answer += 1
-            for i in range(0,4):
-                stack.pop()
-    return answer
+    burger = "1231"
+    # map 으로 str 을 만들고, "1231" 을 regex 로 찾기
+    ingredientStr = ''.join(map(str, ingredient))
+    burgerCount = ingredientStr.find(burger)
+    if burgerCount < 0:
+        return 0
+    else:
+        return burgerCount
