@@ -1,16 +1,18 @@
 def solution(keymap, targets):
     answer = []
-    keyDict = {}
+    keyboard = dict()
+    targetCounts = [0] * len(targets)
     for key in keymap:
-        for idx,k in enumerate(key):
-            if(keyDict.get(k) == None) or (keyDict.get(k) > idx):
-                keyDict.update({k:idx+1})
-    for t in targets:
-        sum = 0
-        for idx,t in enumerate(t):
-            if(keyDict.get(t) == None):
-                sum = -1
+        for idx, eachKey in enumerate(key):
+            if eachKey in keyboard:
+                keyboard[eachKey] = min(idx + 1, keyboard.get(eachKey))
+            else:
+                keyboard[eachKey] = idx + 1
+    for idx, eachTarget in enumerate(targets):
+        for eachTargetKey in eachTarget:
+            if eachTargetKey in keyboard:
+                targetCounts[idx] += keyboard.get(eachTargetKey)
+            else:
+                targetCounts[idx] = -1
                 break
-            sum += keyDict.get(t)
-        answer.append(sum)
-    return answer
+    return targetCounts
