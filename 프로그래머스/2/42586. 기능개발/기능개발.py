@@ -1,22 +1,23 @@
 import math
+
+
 def solution(progresses, speeds):
     answer = []
-
-    # 1
-    leftProgresses = [math.ceil((100 - p) / speeds[idx]) for idx, p in enumerate(progresses)]
-
-    leftPStack = [leftProgresses[0]]
-    daysToDeploy = 0
-    for idx,pr in enumerate(leftProgresses):
-        # 2
-        if(pr <= leftPStack[-1]):
-            daysToDeploy += 1
-        # 3
+    leftDaysToFinish = [0] * len(progresses)
+    progresseStack = []
+    for i in range(len(progresses)):
+        leftDaysToFinish[i] = math.ceil((100 - progresses[i]) / speeds[i])
+    # 7, 3, 9
+    progresseStack.append(leftDaysToFinish[0])  # 7
+    count = 1
+    for i in range(1, len(leftDaysToFinish) + 1):
+        if i == len(leftDaysToFinish):
+            answer.append(count)
+            break
+        if leftDaysToFinish[i] <= progresseStack[-1]:
+            count += 1
         else:
-            answer.append(daysToDeploy)
-            leftPStack.append(pr)
-            daysToDeploy = 1
-    answer.append(daysToDeploy)
-    
-    # 4
+            progresseStack.append(leftDaysToFinish[i])
+            answer.append(count)
+            count = 1
     return answer
