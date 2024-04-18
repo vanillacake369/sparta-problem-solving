@@ -1,11 +1,10 @@
-def solution(n,a,b):
-    answer = 0
-    ra = a
-    rb = b
-    while(True):
-        ra = ra // 2 + ra % 2
-        rb = rb // 2 + rb % 2
-        answer += 1
-        if(ra == rb):
-            break
-    return answer
+def solution(n, a, b):
+    count = 0
+    """
+    아무리 봐도 이진탐색인데,,,
+    """
+    while a != b:
+        a = (a + 1) // 2
+        b = (b + 1) // 2
+        count += 1
+    return count
